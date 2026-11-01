@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Registration Form</h2>
+<form onsubmit="return validate()">
+<input id="name" placeholder="Name"><br><br>
+<input id="email" placeholder="Email"><br><br>
+<input id="phone" placeholder="Phone"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+<button>Register</button>
+</form>
+<p id="msg"></p>
+<script>
+function validate(){
+ let n=document.getElementById("name").value;
+ let e=document.getElementById("email").value;
+ let p=document.getElementById("phone").value;
+ let pw=document.getElementById("pass").value;
+ let msg=document.getElementById("msg");
+ if(!n||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)||
+ !/^[0-9]{10}$/.test(p)||pw.length<6){
+ msg.innerHTML="Invalid Details!";
+ return false;
+ }
+ msg.innerHTML="Registration Successful!";
+ return false;
+}
+</script>
+</body>
+</html>

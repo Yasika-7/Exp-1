@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My React SPA</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 80%;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+const { useState } = React;
+
+// Home Component
+function Home() {
+    return <h2>Welcome to Home Page</h2>;
+}
+
+// About Component
+function About() {
+    return <h2>We are learning React JS.</h2>;
+}
+
+// Contact Component
+function Contact() {
+    return <h2>Email: example@gmail.com</h2>;
+}
+
+// Main App Component
+function App() {
+    const [page, setPage] = useState("Home");
+
+    return (
+        <div className="container">
+            <h1>My React SPA</h1>
+
+            <button onClick={() => setPage("Home")}>
+                Home
+            </button>
+
+            <button onClick={() => setPage("About")}>
+                About
+            </button>
+
+            <button onClick={() => setPage("Contact")}>
+                Contact
+            </button>
+
+            <hr />
+
+            {page === "Home" && <Home />}
+            {page === "About" && <About />}
+            {page === "Contact" && <Contact />}
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById("root"))
+    .render(<App />);
+
+</script>
+
+</body>
+</html>

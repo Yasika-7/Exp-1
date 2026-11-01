@@ -1,0 +1,96 @@
+
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// Frontend
+app.get("/", (req, res) => {
+    res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Web Application</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <style>
+            body {
+                font-family: Arial;
+                text-align: center;
+                background: #e3f2fd;
+            }
+
+            .container {
+                background: white;
+                width: 350px;
+                margin: 100px auto;
+                padding: 30px;
+                border-radius: 10px;
+            }
+
+            button {
+                background: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            function App() {
+                const [message, setMessage] = React.useState("Click the button");
+
+                async function getData() {
+                    try {
+                        const res = await fetch("/api");
+                        const data = await res.json();
+                        setMessage(data.message);
+                    } catch {
+                        setMessage("Connection Failed");
+                    }
+                }
+
+                return (
+                    <div className="container">
+                        <h1>My Web Application</h1>
+                        <h2>React Frontend</h2>
+                        <button onClick={getData}>
+                            Connect Backend
+                        </button>
+                        <h3>{message}</h3>
+                    </div>
+                );
+            }
+
+            ReactDOM.createRoot(
+                document.getElementById("root")
+            ).render(<App />);
+        </script>
+    </body>
+    </html>
+    `);
+});
+
+// Backend API
+app.get("/api", (req, res) => {
+    res.json({
+        message: "Backend Connected Successfully!"
+    });
+});
+
+// Start Server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log("Server running on port " + PORT);
+});

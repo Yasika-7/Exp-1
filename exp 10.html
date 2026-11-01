@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Performance Audit</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e3f2fd;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            margin: 80px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Website Audit</h1>
+
+    <p>Performance and Security Optimization</p>
+
+    <button onclick="audit()">Check Website</button>
+
+    <div id="output"></div>
+
+</div>
+
+<script>
+
+function audit() {
+
+    document.getElementById("output").innerHTML = `
+        <h3>Website Audit Results</h3>
+        <p class="result">Performance: Optimized</p>
+        <p class="result">Accessibility: Improved</p>
+        <p class="result">SEO: Improved</p>
+        <p class="result">Best Practices: Checked</p>
+        <p class="result">Security: HTTPS Recommended</p>
+    `;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Portfolio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#eee;text-align:center}
+header{background:#222;color:white;padding:20px}
+nav a{color:white;margin:15px}
+.container{display:flex;justify-content:center;flex-wrap:wrap;padding:30px}
+section{background:white;margin:10px;padding:25px;flex:1;min-width:250px}
+footer{background:#222;color:white;padding:15px}
+@media(max-width:600px){.container{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<h1>My Portfolio</h1>
+<nav><a href="#about">About</a><a href="#skills">Skills</a></nav>
+</header>
+<div class="container">
+<section id="about"><h2>About Me</h2><p>I am a Web Developer.</p></section>
+<section id="skills"><h2>Skills</h2><p>HTML, CSS, JavaScript, React</p></section>
+</div>
+<footer>© 2026 My Portfolio</footer>
+</body>
+</html>
